@@ -5,7 +5,9 @@ Desenvolvi esse jogo com a intenção de testar e aprofundar o meu conhecimento 
 
 Como Jogar:
 1 - Assim que o jogo for iniciado ele perguntará o seu Username, informe um que seja de sua preferência (Sem espaços).
+
 2 - Em seguida, selecione o número da dificuldade de sua preferência.
+
 3 - Divirta-se!
 
 Comecei a estudar C++ no dia 24/03/2021 o jogo é bem simples, não o fiz com intenção de ser algo profissional, nem próximo disso, criei unicamente com a intenção de testar e apronfundar meus conhecimentos básicos na linguagem. Me desafiei a finalizá-lo até o final de Abril, sendo que comecei a desenvolvê-lo no dia 1º de Abril.
