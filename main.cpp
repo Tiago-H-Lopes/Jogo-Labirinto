@@ -57,7 +57,7 @@ int EscolherMapa(int dificuldade){
         tamanhoLinhaMapa = 10;
         tamanhoColunaMapa = 15;
         break;}
-        case(2):{
+        case(3):{
             int mapaN[25][31] = {
         //  1,2,3,4,5 ,6,7 ,8,9 ,0,1 ,2,3 ,4,5 ,6,7 ,8,9 ,2,1,2,3 ,4,5 ,6,7 ,8,9,3,1
             6,1,1,1,1 ,1,12,1,1 ,1,1 ,1,1 ,1,12,1,1 ,1,1 ,1,1,1,12,1,1 ,1,1 ,1,12,1,5, //1
@@ -76,7 +76,7 @@ int EscolherMapa(int dificuldade){
             4,0,4,0,4 ,0,0 ,0,4 ,0,0 ,0,4 ,0,0 ,0,4 ,0,4 ,0,4,0,0 ,0,4 ,0,0 ,0,4 ,0,4, //14
             4,0,4,0,4 ,0,1 ,1,11,1,1 ,0,4 ,0,1 ,1,11,1,9 ,0,8,1,1 ,0,10,1,1 ,0,4 ,0,4, //15
             4,0,4,0,4 ,0,0 ,0,0 ,0,0 ,0,4 ,0,0 ,0,0 ,0,4 ,0,0,0,0 ,0,4 ,0,0 ,0,0 ,0,4, //16
-            4,0,4,0,8 ,1,1 ,1,1 ,1,12,1,1 ,1,12,1,1 ,0,10,1,1,1,1 ,1,4 ,0,0 ,0,0 ,0,4, //17
+            4,0,4,0,8 ,1,1 ,1,1 ,1,12,1,11,1,12,1,1 ,0,10,1,1,1,1 ,1,4 ,0,0 ,0,0 ,0,4, //17
             4,0,4,0,0 ,0,0 ,0,0 ,0,4 ,0,0 ,0,4 ,0,0 ,0,4 ,0,0,0,0 ,0,4 ,0,0 ,0,0 ,0,4, //18
             4,0,8,1,1 ,1,5 ,0,4 ,0,8 ,1,1 ,0,4 ,0,1 ,1,7 ,0,6,1,1 ,0,10,1,1 ,1,5 ,0,4, //19
             4,0,0,0,0 ,0,4 ,0,4 ,0,0 ,0,0 ,0,4 ,0,0 ,0,0 ,0,4,0,0 ,0,4 ,0,0 ,0,4 ,0,4, //20
@@ -94,7 +94,7 @@ int EscolherMapa(int dificuldade){
             tamanhoLinhaMapa = 25;
             tamanhoColunaMapa = 31;
             break;}
-        case(3):{
+        case(2):{
             int mapaD[26][34] = {
             6 ,1,1,12,1,1,1 ,1,1 ,1,1,1 ,1,1,1,1 ,1,1 ,1 ,1,12,1,1 ,1,1,1 ,1,1,1 ,1,1,1,1,5,
             4 ,2,0,4 ,0,0,0 ,0,0 ,0,0,0 ,0,0,0,0 ,0,0 ,0 ,0,4 ,0,0 ,0,0,0 ,0,0,0 ,0,0,0,0,4,
@@ -339,7 +339,7 @@ void ChecarParedeD(){
         }
 }
 void MostrarPlacarLideres(){
-    string player[30], dificuldade[30], nome;
+    string player[30], dificuldade[30], nome, dif;
     int movimentos[30], x;
     inputStream.open("PlacarLideres.txt");
     for(int i=0; i<30; i++){
@@ -348,54 +348,36 @@ void MostrarPlacarLideres(){
         inputStream >> dificuldade[i];
         if(player[i] == ""){break;}
     }
+            for(int j=0; j<30; j++){
+                for(int k=j+1; k<30; k++){
+                    if(movimentos[j] > movimentos[k]){
+                            x=movimentos[j];
+                            movimentos[j]=movimentos[k];
+                            movimentos[k]=x;
+                            nome=player[j];
+                            player[j]=player[k];
+                            player[k]=nome;
+                            dif=dificuldade[j];
+                            dificuldade[j]=dificuldade[k];
+                            dificuldade[k]=dif;
+                    }
+                }
+            }
+
+
     for(int i=0; i<30; i++){
-        if (dificuldade[i] == "Facil"){
-            for(int j=0; j<30; j++){
-                for(int k=j+1; k<30; k++){
-                    if(movimentos[j] > movimentos[k]){
-                            x=movimentos[j];
-                            movimentos[j]=movimentos[k];
-                            movimentos[k]=x;
-                            nome=player[j];
-                            player[j]=player[k];
-                            player[k]=nome;
-                    }
-                }
-            }
-        }else{continue;}
-        if (dificuldade[i] == "Normal"){
-            for(int j=0; j<30; j++){
-                for(int k=j+1; k<30; k++){
-                    if(movimentos[j] > movimentos[k]){
-                            x=movimentos[j];
-                            movimentos[j]=movimentos[k];
-                            movimentos[k]=x;
-                            nome=player[j];
-                            player[j]=player[k];
-                            player[k]=nome;
-                    }
-                }
-            }
-        }else{continue;}
-        if (dificuldade[i] == "Dificil"){
-            for(int j=0; j<30; j++){
-                for(int k=j+1; k<30; k++){
-                    if(movimentos[j] > movimentos[k]){
-                            x=movimentos[j];
-                            movimentos[j]=movimentos[k];
-                            movimentos[k]=x;
-                            nome=player[j];
-                            player[j]=player[k];
-                            player[k]=nome;
-                    }
-                }
-            }
-        }else{continue;}
-    }
-    for(int i=0; i<30; i++){
-        if(player[i] == ""){continue;}else{
+        if(player[i] == "" || dificuldade[i] == "Facil" || dificuldade[i] == "Normal"){continue;}else{
             cout << "\nPlayer: " << player[i] << "\nMovimentos: " << movimentos[i] << "\nDificuldade: " << dificuldade[i] << endl;}
     }
+    for(int i=0; i<30; i++){
+        if(player[i] == "" || dificuldade[i] == "Facil" || dificuldade[i] == "Dificil"){continue;}else{
+            cout << "\nPlayer: " << player[i] << "\nMovimentos: " << movimentos[i] << "\nDificuldade: " << dificuldade[i] << endl;}
+    }
+    for(int i=0; i<30; i++){
+        if(player[i] == "" || dificuldade[i] == "Dificil" || dificuldade[i] == "Normal"){continue;}else{
+            cout << "\nPlayer: " << player[i] << "\nMovimentos: " << movimentos[i] << "\nDificuldade: " << dificuldade[i] << endl;}
+    }
+
     inputStream.close();
 }
 
@@ -412,7 +394,12 @@ int main(){
     cin >> player;
     cout << "\nPor Favor, escolha a dificuldade desejada\n1 - Fácil\n2 - Normal\n3 - Difícil\nEscolha o número da dificuldade e pressione enter: ";
     cin >> numeroDificuldade;
-        if(numeroDificuldade == 1){dificuldade = "Facil";}else if(numeroDificuldade == 2){dificuldade == "Normal";}else if(numeroDificuldade == 3){dificuldade == "Dificil";}
+        switch(numeroDificuldade){
+            case(1):{dificuldade = "Facil";break;}
+            case(2):{dificuldade = "Normal";break;}
+            case(3):{dificuldade = "Dificil";break;}
+            default:cout << "Número inválido, finalizando programa.";exit(1);
+        }
     EscolherMapa(numeroDificuldade);
     system("cls");
     DesenharMapa();
