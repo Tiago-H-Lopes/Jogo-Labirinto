@@ -11,6 +11,8 @@ Como Jogar:
 Comecei a estudar C++ no dia 24/03/2021 o jogo é bem simples, não o fiz com intenção de ser algo profissional, nem próximo disso, criei unicamente com a intenção de testar e apronfundar meus conhecimentos básicos na linguagem. Me desafiei a finalizá-lo até o final de Abril, sendo que comecei a desenvolvê-lo no dia 1º de Abril.
 Estou totalmente aberto a criticas e conselhos.
 
+Como o jogo é um projeto simples, não me preocupei em torná-lo multi plataforma, já que alguns comandos variam do windows para o Linux, portanto, desenvolvi ele para funcionar apenas no Windows.
+
 Desenvolvedor:                           
 Tiago Henrique Freire de Oliveira Lopes, 19 anos, Engenharia de Software(2019-2023)                    
 Guarulhos - SP                       
