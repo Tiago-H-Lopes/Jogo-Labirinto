@@ -460,6 +460,6 @@ int main(){
     outputStream.open("PlacarLideres.txt", ios::app);
     outputStream << "\n" << movimentos << " " << player << " " << dificuldade;
     outputStream.close();
-    if(resposta == 'S' || resposta == 's'){system("cls");MostrarPlacarLideres();}
+    if(resposta == 'S' || resposta == 's'){system("cls");MostrarPlacarLideres();Sleep(30000);}
 return 0;
 }
